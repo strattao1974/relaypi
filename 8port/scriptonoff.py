@@ -16,15 +16,19 @@ for i in pinList:
 
 # time to sleep between operations in the main loop
 
-SleepTimeL = 0.1
+SleepTimeL = 0.05
 SleepTimeS = 10
 
 try:
+  count = 10
+  while (count > 0):
     
-   while True:
-    
-        GPIO.output(2,GPIO.LOW);
-	time.sleep(SleepTimeL)
+	print '   The Count is:', count
+
+        for i in pinList:
+
+            GPIO.output(2,GPIO.LOW);
+        time.sleep(SleepTimeL)
 	  
   	GPIO.output(3,GPIO.LOW);
   	time.sleep(SleepTimeL)
@@ -60,10 +64,9 @@ try:
    
   	GPIO.output(9,GPIO.HIGH)
   	time.sleep(SleepTimeL)
-  
-  	GPIO.cleanup()
-  	time.sleep(SleepTimeL)
-	
+        count = count - 1  
+       
+  		
 # End program cleanly with keyboard
 except KeyboardInterrupt:
   print "  Quit"
